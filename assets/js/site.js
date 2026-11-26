@@ -306,8 +306,15 @@
   // Current section in the nav
   const links = [...document.querySelectorAll('.nav a[href^="#"]')].filter(l => !document.querySelector(l.getAttribute('href'))?.closest('.side'));
   if (links.length) {
+    const track = document.querySelector('.nav-track');
     const spy = new IntersectionObserver(es => es.forEach(e => {
-      if (e.isIntersecting) links.forEach(l => l.toggleAttribute('data-on', l.getAttribute('href') === '#' + e.target.id));
+      if (e.isIntersecting) links.forEach(l => {
+        const on = l.getAttribute('href') === '#' + e.target.id;
+        l.toggleAttribute('data-on', on);
+        if (on && track && matchMedia('(max-width: 640px)').matches) {
+          l.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+        }
+      });
     }), { rootMargin: '-45% 0px -50% 0px' });
     links.forEach(l => { const t = document.querySelector(l.getAttribute('href')); if (t) spy.observe(t); });
   }
