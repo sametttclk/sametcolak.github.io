@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+  <defs>
+    <linearGradient id="bg_rtsg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05101f"/>
+      <stop offset="100%" stop-color="#020810"/>
+    </linearGradient>
+    <linearGradient id="sweep" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#4facfe" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#bg_rtsg)"/>
+  <!-- Radar circles -->
+  <circle cx="320" cy="190" r="150" fill="none" stroke="#0e2a47" stroke-width="1.5"/>
+  <circle cx="320" cy="190" r="105" fill="none" stroke="#0e2a47" stroke-width="1.5"/>
+  <circle cx="320" cy="190" r="60" fill="none" stroke="#133d67" stroke-width="1.5"/>
+  <circle cx="320" cy="190" r="20" fill="#082038" stroke="#00f2fe" stroke-width="1.5"/>
+  <line x1="320" y1="35" x2="320" y2="345" stroke="#0e2a47" stroke-width="1"/>
+  <line x1="165" y1="190" x2="475" y2="190" stroke="#0e2a47" stroke-width="1"/>
+  <!-- Radar sweep pie slice -->
+  <path d="M320 190 L426 84 A150 150 0 0 0 320 40 Z" fill="url(#sweep)"/>
+  <!-- Flight tracks & points -->
+  <polyline points="220,130 260,150 300,165 370,180 430,195" fill="none" stroke="#00f2fe" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <circle cx="370" cy="180" r="4" fill="#00f2fe"/>
+  <text x="382" y="178" font-family="'JetBrains Mono', monospace" font-size="10" fill="#38bdf8">TK-402 320kts</text>
+  <polyline points="250,270 290,240 350,220 400,210" fill="none" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <circle cx="350" cy="220" r="4" fill="#f43f5e"/>
+  <text x="362" y="235" font-family="'JetBrains Mono', monospace" font-size="10" fill="#fb7185">DEF-09 450kts</text>
+  <!-- Header & Subtitle -->
+  <text x="320" y="32" font-family="'Inter', sans-serif" font-weight="700" font-size="15" fill="#e2e8f0" text-anchor="middle" letter-spacing="3">RADAR &amp; TRACK SCENARIO GENERATOR</text>
+  <text x="320" y="375" font-family="'Inter', sans-serif" font-weight="600" font-size="12" fill="#64748b" text-anchor="middle" letter-spacing="1.5">AYESAŞ &amp; ATILIM | JAVAFX ATC SIMULATOR</text>
+</svg>

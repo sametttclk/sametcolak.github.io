@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 80" width="160" height="80">
+  <rect width="160" height="80" rx="4" fill="#ffffff"/>
+  <circle cx="28" cy="40" r="14" fill="#0284c7" opacity="0.85"/>
+  <circle cx="36" cy="40" r="9" fill="#06b6d4"/>
+  <text x="96" y="38" font-family="'Inter', sans-serif" font-weight="800" font-size="16" fill="#0f172a" text-anchor="middle" letter-spacing="0.5">DURU BİLİŞİM</text>
+  <text x="96" y="52" font-family="'Inter', sans-serif" font-weight="600" font-size="7.5" fill="#64748b" text-anchor="middle" letter-spacing="1">TEKNOLOJİLERİ</text>
+</svg>

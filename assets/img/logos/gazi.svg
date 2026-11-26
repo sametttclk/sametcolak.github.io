@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 80" width="160" height="80">
+  <rect width="160" height="80" rx="4" fill="#ffffff"/>
+  <circle cx="28" cy="40" r="14" fill="#1e3a8a"/>
+  <text x="28" y="45" font-family="'Inter', sans-serif" font-weight="900" font-size="14" fill="#ffffff" text-anchor="middle">G</text>
+  <text x="96" y="38" font-family="'Inter', sans-serif" font-weight="800" font-size="15" fill="#1e3a8a" text-anchor="middle" letter-spacing="0.5">GAZİ BELTEK</text>
+  <text x="96" y="52" font-family="'Inter', sans-serif" font-weight="600" font-size="7.5" fill="#64748b" text-anchor="middle" letter-spacing="1">ÜNİVERSİTESİ</text>
+</svg>

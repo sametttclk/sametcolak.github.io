@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1726"/>
+      <stop offset="100%" stop-color="#050a12"/>
+    </linearGradient>
+    <linearGradient id="acc1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#bg1)"/>
+  <circle cx="320" cy="180" r="140" fill="none" stroke="#1e293b" stroke-width="1.5" stroke-dasharray="4 6"/>
+  <circle cx="320" cy="180" r="90" fill="none" stroke="#334155" stroke-width="1.5"/>
+  <circle cx="320" cy="180" r="40" fill="#0f172a" stroke="url(#acc1)" stroke-width="3"/>
+  <!-- Shield Icon in Center -->
+  <path d="M320 162 L335 170 V185 C335 196 328 204 320 208 C312 204 305 196 305 185 V170 Z" fill="none" stroke="#10b981" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M320 174 V195 M313 182 H327" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Status nodes -->
+  <circle cx="210" cy="140" r="6" fill="#10b981"/>
+  <line x1="216" y1="140" x2="280" y2="165" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.4"/>
+  <circle cx="430" cy="140" r="6" fill="#3b82f6"/>
+  <line x1="424" y1="140" x2="360" y2="165" stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.4"/>
+  <circle cx="320" cy="70" r="5" fill="#f59e0b"/>
+  <line x1="320" y1="76" x2="320" y2="140" stroke="#f59e0b" stroke-width="1.5" stroke-opacity="0.4"/>
+  <!-- Terminal mockup below -->
+  <rect x="80" y="270" width="480" height="90" rx="8" fill="#090d16" stroke="#1e293b"/>
+  <circle cx="102" cy="286" r="4" fill="#ef4444"/>
+  <circle cx="116" cy="286" r="4" fill="#f59e0b"/>
+  <circle cx="130" cy="286" r="4" fill="#10b981"/>
+  <text x="102" y="318" font-family="'JetBrains Mono', monospace" font-size="13" fill="#10b981">&gt; SentinelGate REST Core: ACTIVE [Port: 8080 | TLSv1.3]</text>
+  <text x="102" y="342" font-family="'JetBrains Mono', monospace" font-size="12" fill="#94a3b8">  Spring Security JWT Auth: VERIFIED | PostgreSQL Connection: POOL_READY</text>
+  <text x="320" y="50" font-family="'Inter', sans-serif" font-weight="700" font-size="16" fill="#e2e8f0" text-anchor="middle" letter-spacing="3">SENTINELGATE</text>
+  <text x="320" y="248" font-family="'Inter', sans-serif" font-weight="600" font-size="13" fill="#64748b" text-anchor="middle" letter-spacing="1.5">SECURE RESTful MESSAGING &amp; MONITORING</text>
+</svg>
