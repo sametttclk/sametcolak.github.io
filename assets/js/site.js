@@ -33,19 +33,124 @@
     document.head.append(s);
   }));
 
-  // WebGL waves behind the page; the CSS background stays if they cannot load
-  const script = src => new Promise((ok, no) => {
-    const s = document.createElement('script');
-    s.src = src; s.onload = ok; s.onerror = no;
-    document.head.append(s);
-  });
-  if (!reduced && !navigator.connection?.saveData) addEventListener('load', async () => {
-    try {
-      await script('https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js');
-      await script('https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.waves.min.js');
-      VANTA.WAVES({ el: '#bg', THREE, mouseControls: true, touchControls: false, gyroControls: false, color: 0x0a1f2e, shininess: 28, waveHeight: 16, waveSpeed: .5, zoom: .9 });
-    } catch (e) {}
-  });
+  // Interactive Neural Constellation & Particle Network Background
+  const bgEl = document.getElementById('bg');
+  if (bgEl && !reduced) {
+    const canvas = document.createElement('canvas');
+    bgEl.prepend(canvas);
+    const ctx = canvas.getContext('2d');
+    let width = 0, height = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let particles = [];
+    const mouse = { x: null, y: null, maxDist: 140 };
+
+    const resize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.scale(dpr, dpr);
+      initParticles();
+    };
+
+    const initParticles = () => {
+      const count = Math.floor((width * height) / 16000);
+      particles = [];
+      const colors = ['#6cc4b4', '#38bdf8', '#10b981', '#a78bfa'];
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          radius: Math.random() * 1.8 + 1,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          alpha: Math.random() * 0.45 + 0.25
+        });
+      }
+    };
+
+    let animationId = null;
+    let isVisible = true;
+
+    const draw = () => {
+      if (!isVisible) return;
+      ctx.clearRect(0, 0, width, height);
+
+      const maxDist = 120;
+      for (let i = 0; i < particles.length; i++) {
+        const p1 = particles[i];
+
+        p1.x += p1.vx;
+        p1.y += p1.vy;
+        if (p1.x < 0 || p1.x > width) p1.vx *= -1;
+        if (p1.y < 0 || p1.y > height) p1.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p1.x, p1.y, p1.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p1.color;
+        ctx.globalAlpha = p1.alpha;
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < maxDist) {
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = '#6cc4b4';
+            ctx.globalAlpha = (1 - dist / maxDist) * 0.18;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+
+        if (mouse.x !== null && mouse.y !== null) {
+          const mdx = p1.x - mouse.x;
+          const mdy = p1.y - mouse.y;
+          const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+          if (mdist < mouse.maxDist) {
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = '#38bdf8';
+            ctx.globalAlpha = (1 - mdist / mouse.maxDist) * 0.35;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+      ctx.globalAlpha = 1;
+      animationId = requestAnimationFrame(draw);
+    };
+
+    window.addEventListener('resize', () => {
+      clearTimeout(window._bgResizeTimer);
+      window._bgResizeTimer = setTimeout(resize, 150);
+    });
+
+    window.addEventListener('pointermove', e => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    }, { passive: true });
+
+    window.addEventListener('pointerleave', () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      isVisible = !document.hidden;
+      if (isVisible) draw();
+      else cancelAnimationFrame(animationId);
+    });
+
+    resize();
+    draw();
+  }
 
   // Typed role line
   const typed = document.querySelector('.typed');
@@ -151,7 +256,7 @@
   // Live GitHub stars; the numbers in the HTML remain if the request fails
   const starEls = document.querySelectorAll('[data-repo] b, [data-total] b');
   if (starEls.length) {
-    const user = root.dataset.githubUser || 'sametcolak';
+    const user = root.dataset.githubUser || 'sametttclk';
     fetch(`https://api.github.com/users/${user}/repos?per_page=100`)
       .then(r => r.ok ? r.json() : [])
       .then(repos => {
