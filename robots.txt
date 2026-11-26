@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://sametttclk.github.io/sametcolak.github.io/sitemap.xml
+Sitemap: https://sametttclk.github.io/portfolio/sitemap.xml
